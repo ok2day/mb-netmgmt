@@ -7,9 +7,7 @@ from urllib.parse import urlparse
 import ncclient.manager
 import paramiko
 import pytest
-from ncclient.transport.session import BASE_NS_1_0, to_ele
-
-from ncclient.transport.ssh import MSG_DELIM
+from ncclient.transport.session import BASE_NS_1_0, MSG_DELIM, to_ele
 from scapy.layers.snmp import ASN1_NULL, SNMPvarbind
 
 from mb_netmgmt import mb, netconf, snmp, ssh, use_scalar_strings, yaml
@@ -200,7 +198,7 @@ def test_netconf_default_response():
 def test_netconf_private_key():
     with mb(
         [
-            {"protocol": "netconf", "port": 830, "stubs": []},
+            {"protocol": "netconf", "port": 8832, "stubs": []},
             {
                 "protocol": "netconf",
                 "port": port,
@@ -209,7 +207,7 @@ def test_netconf_private_key():
                         "responses": [
                             {
                                 "proxy": {
-                                    "to": f"netconf://{os.environ['NETCONF_USERNAME']}@localhost",
+                                    "to": f"netconf://{os.environ['NETCONF_USERNAME']}@localhost:8832",
                                     "key": os.environ["NETCONF_KEY"],
                                 }
                             },
