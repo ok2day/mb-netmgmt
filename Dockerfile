@@ -7,10 +7,10 @@ RUN apk add \
     py3-paramiko \
     py3-pip \
     py3-requests \
+    # dependencies for ruamel.yaml:
     gcc \
     musl-dev \
     python3-dev
 RUN pip install scapy@git+https://github.com/secdev/scapy
-COPY ./ /var/tmp/mb-netmgmt
-RUN pip install -e /var/tmp/mb-netmgmt
-WORKDIR /var/tmp/mb-netmgmt/mb_netmgmt
+RUN pip install mb-netmgmt
+WORKDIR /usr/lib/python3.11/site-packages/mb_netmgmt

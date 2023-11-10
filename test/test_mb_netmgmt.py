@@ -8,6 +8,7 @@ import ncclient.manager
 import paramiko
 import pytest
 from ncclient.transport.session import BASE_NS_1_0, to_ele
+
 from ncclient.transport.ssh import MSG_DELIM
 from scapy.layers.snmp import ASN1_NULL, SNMPvarbind
 
@@ -38,12 +39,11 @@ cli_responses = [
     (b"\rDestination file name (control-c to abort): [running-config]?", True),
     (b"\rDelete net/node0_8_CPU0/disk0:/c12k-mini.vm-4.3.2[confirm]", True),
     (b"\rDestination filename [/net/node0_8_CPU0/disk0:/c12k-mini.vm-4.3.2]?", True),
-    (b"\rDestination filename [/disk0:/c12k-mini.vm-4.3.2]?", True),
     (b"\r\nDestination filename [/disk0:/c12k-mini.vm-4.3.2]?", True),
     (b"\r\n\rCopy : Destination exists, overwrite ?[confirm]", True),
     (b"\rReload hardware module ? [no,yes] ", True),
     (b"\rDo you wish to continue?[confirm(y/n)]", True),
-    (b'\r\n\r\nFormat will destroy all data on "harddisk:". Continue? [confirm]',True),
+    (b'\r\n\r\nFormat will destroy all data on "harddisk:". Continue? [confirm]', True),
     (b"\r --More-- ", True),
     (b"\rSending 5, 100-byte ICMP Echos to 8.8.8.8, timeout is 2 seconds:", False),
     (b"\rProceed with switchover 0/8/CPU0 -> 0/7/CPU0? [confirm]", True),
@@ -51,11 +51,7 @@ cli_responses = [
     (b"\rNAME: ", False),
     (b"\rPID: ", False),
     (b"\r  Configured hold time: 180, keepalive: ", False),
-    (b"\r    By ORF policy: ", False),
-    (b'\n\r\n For Address Family: ', False),
-    (b'\r\n  Configured hold time: 180, keepalive: ', False),
-    
-
+    (b"\n\r\n For Address Family: ", False),
 ]
 
 

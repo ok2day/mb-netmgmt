@@ -130,12 +130,9 @@ def get_cli_patterns():
         b"[\r\n\x00\x1b\[K]RP/\d+/(?:RS?P)?\d+\/CPU\d+:[^#]+(?:\([^\)]+\))?#$"
     )  # based on IOS XR driver of Exscript
     patterns.append(
-    #    b"[\r\n\x00\x1b\[K]+(?P<text>[^ ][\w\/ .:,>\(\)\-\?]*[^A-Z])(?P<default>\[[\w\/.,():\-]*\])?(?(default)(?P<end1>(?:\?|: ?| |)$)|(?P<end2>: $))"
-    #    b"[\r\n\x00\x1b\[K]+(?P<text>[A-Z][\w\/ .:,>\(\)\-\?]*[^A-Z])(?P<default>\[[\w\/.,():\-]*\])?(?(default)(?P<end1>(?:\?|: ?| |)$)|(?P<end2>: $))"
         b"[\r\n\x00\x1b\[K]+(?P<text>[A-Z][\w\/ .:,>\(\)\-\?\"]*[^A-Z])(?P<default>\[[\w\/.,():\-]*\])?(?(default)(?P<end1>(?:\?|: ?| |)$)|(?P<end2>: $))"
     )  # Interactive prompt
     patterns.append(b"[\r\n\x00\x1b\[K] --More-- $")  # Terminal paging
-    # patterns.append(b".* Continue\? \[confirm\]")   # Dialog window
     return patterns
 
 
